@@ -3,7 +3,7 @@ package com.hhh.view.hye;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import com.hhh.controller.hye.OrderManager;
+import com.hhh.controller.OrderManager;
 import com.hhh.model.dto.hye.MenuDTO;
 import com.hhh.model.dto.hye.MyPageDTO;
 import com.hhh.model.dto.hye.StoreDTO;

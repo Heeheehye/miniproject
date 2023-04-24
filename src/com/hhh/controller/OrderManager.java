@@ -1,12 +1,11 @@
-package com.hhh.controller.hye;
+package com.hhh.controller;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.hhh.controller.yoon.drinkManager;
+import com.hhh.model.dto.hye.MenuDTO;
 import com.hhh.model.dto.hye.OrderListDTO;
 import com.hhh.model.dto.hye.StoreDTO;
-import com.hhh.model.yoon.drinks;
 
 public class OrderManager {
 	/* 초기화 블럭, 리스트 있는 클래스를 통합?????????? */
@@ -25,8 +24,16 @@ public class OrderManager {
 			storelist[4] = new StoreDTO(5, "동대문점", "02-555-5555");
 		}
 	
-	private drinks menulist = new drinks(); 
+	private MenuDTO[] menulist = new MenuDTO[6];
 	
+		{  // MenuDTO 인스턴스 초기화 블록 
+			menulist[0] = new MenuDTO(1, "아메리카노", 4000 );
+			menulist[1] = new MenuDTO(2, "슈크림라떼", 5000 );
+			menulist[2] = new MenuDTO(3, "봄딸기라떼", 5500 );
+			menulist[3] = new MenuDTO(4, "돌체라떼", 5000 );
+			menulist[4] = new MenuDTO(5, "자바칩 프라푸치노", 6000 );
+			menulist[5] = new MenuDTO(6, "자몽허니블랙티", 5600 );
+		}
 	
 	
 	public MenuDTO orderMenu(int selectMenu) {
