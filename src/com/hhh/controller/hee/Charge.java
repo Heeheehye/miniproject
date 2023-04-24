@@ -1,4 +1,4 @@
-package com.hhh.controller;
+package com.hhh.controller.hee;
 
 import java.util.Scanner;
 

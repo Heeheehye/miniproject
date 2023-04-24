@@ -1,6 +1,6 @@
-package com.hhh.model;
+package com.hhh.model.hee;
 
-import com.hhh.view.SignUp;
+import com.hhh.view.hee.SignUp;
 
 public class MyPageDTO {
 
