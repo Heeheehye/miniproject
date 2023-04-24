@@ -2,8 +2,10 @@ package com.hhh.controller;
 
 import java.util.*;
 
-import com.hhh.model.dto.drinks;
-import com.hhh.view.Menu;
+import com.hhh.model.yoon.drinks;
+import com.hhh.view.yoon.*;
+import com.hhh.controller.yoon.*;
+
 
 public class drinkManager {
 
@@ -45,22 +47,25 @@ public class drinkManager {
 
 	}
 
-	// 옵션별(가나다순,높은 가격순,낮은 가격순으로 선택하는 메소드)
+	// 옵션별(가나다순,높은 가격순,낮은 가격순으로 선택하는 메소드 + 나가기 옵션 추가)
 	public void showOptions() {
 
 		System.out.println();
-		System.out.println("---원하시는 기능을 선택하세요---");
+		System.out.println("---원하시는 보기를 선택하세요---");
 		System.out.println("1. 가나다순으로 보기");
 		System.out.println("2. 높은 가격순으로 보기");
 		System.out.println("3. 낮은 가격순으로 보기");
+		System.out.println("4. 그만 보기 ");
 		System.out.println();
 
-		Scanner scan = new Scanner(System.in);
-		int select = scan.nextInt();
-
+	
 		Arrays.asList(bev);
 
-		// 1 :가나다순 2: 높은 가격순 3: 낮은 가격순
+		while(true) {
+			Scanner scan = new Scanner(System.in);
+			int select = scan.nextInt();
+
+		// 1 :가나다순 2: 높은 가격순 3: 낮은 가격순 4: 종료
 		if (select == 1) {
 
 			Arrays.sort(bev, (a, b) -> a.getName().compareTo(b.getName()));
@@ -81,10 +86,16 @@ public class drinkManager {
 			);
 
 			System.out.println(" " + Arrays.asList(bev).toString().replace("[", "").replace("]", "").replace(",", ""));
-		} else {
-			return;
+		} 
+
+		if(select==4) {
+			break;
 		}
 		
+		
+		
+		
+		}
 		
 	}
 

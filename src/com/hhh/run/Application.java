@@ -13,18 +13,16 @@ public class Application {
 //		run.orderMain();
 
 		
-		Service service = new Service(); 
-		OrderManager omg = new OrderManager(); 
+//		Service service = new Service(); 
+//		OrderManager omg = new OrderManager(); 
 		
-		System.out.println(service.getService());	// 지점전체
-		System.out.println(service.getService().get(omg.getStorelist()[0]));	// null
-		System.out.println(service.getService().hashCode()); 
-//		System.out.println(service.getService().get(omg.getStorelist()[0]).hashCode());
-		System.out.println(omg.getStorelist()[0].hashCode());
-		System.out.println(omg.getStorelist()[0]);	// 1번 지점
-		System.out.println(omg.getStorelist()[0].toString());	// 1번 지점 
+
+
+		System.out.println("어서오세요. 😁 원하시는 기능을 선택하세요 😁");
+		System.out.println();
+
 		
-//		service.getService().get(storelist[i])).toString()
+		
 		
 	}
 }

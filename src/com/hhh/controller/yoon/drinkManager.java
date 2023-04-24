@@ -15,13 +15,11 @@ public class drinkManager {
 		bev[3] = new drinks(4, "돌체 라떼", 5000);
 		bev[4] = new drinks(5, "자바칩 프라푸치노", 6000);
 		bev[5] = new drinks(6, "자몽 허니 블랙티", 5600);
-
 	}
 
 	public drinks[] searchMenu(String drinkName) {
 		drinks[] search = new drinks[6];
 		int cnt = 0;
-
 		for (int i = 0; i < bev.length; i++) {
 			if (bev[i].getName().contains(drinkName)) {
 				search[cnt] = bev[i];
@@ -33,7 +31,6 @@ public class drinkManager {
 
 	// 전체 메뉴 보여주기
 	public void showMenu() {
-
 		System.out.println();
 		System.out.println("--------메뉴--------");
 		System.out.println();
@@ -42,7 +39,6 @@ public class drinkManager {
 			System.out.println(bev[i].getNum() + ". " + bev[i].getName() + " " + bev[i].getPrice() / 1000 + ","
 					+ String.valueOf(bev[i].getPrice()).substring(1, 4));
 		}
-
 	}
 
 	// 옵션별(가나다순,높은 가격순,낮은 가격순으로 선택하는 메소드)
