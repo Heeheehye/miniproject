@@ -1,9 +1,9 @@
-package com.hhh.view.hee;
+package com.hhh.view;
 
 import java.util.Scanner;
 
 import com.hhh.controller.Charge;
-import com.hhh.model.hee.MyPageDTO;
+import com.hhh.model.dto.MyPageDTO;
 
 public class SignUp {
 

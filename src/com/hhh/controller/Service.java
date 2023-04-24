@@ -5,8 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.hhh.model.dto.hye.MenuDTO;
-import com.hhh.model.dto.hye.StoreDTO;
+import com.hhh.model.dto.MenuDTO;
+import com.hhh.model.dto.StoreDTO;
 
 public class Service {
 	

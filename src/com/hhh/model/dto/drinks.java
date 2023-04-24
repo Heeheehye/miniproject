@@ -1,4 +1,4 @@
-package com.hhh.model.yoon;
+package com.hhh.model.dto;
 
 public class drinks {
 

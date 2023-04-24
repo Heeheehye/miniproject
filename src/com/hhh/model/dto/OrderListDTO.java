@@ -1,4 +1,4 @@
-package com.hhh.model.dto.hye;
+package com.hhh.model.dto;
 
 import java.util.ArrayList;
 import java.util.List;

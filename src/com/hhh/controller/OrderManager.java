@@ -3,9 +3,9 @@ package com.hhh.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.hhh.model.dto.hye.MenuDTO;
-import com.hhh.model.dto.hye.OrderListDTO;
-import com.hhh.model.dto.hye.StoreDTO;
+import com.hhh.model.dto.MenuDTO;
+import com.hhh.model.dto.OrderListDTO;
+import com.hhh.model.dto.StoreDTO;
 
 public class OrderManager {
 	/* 초기화 블럭, 리스트 있는 클래스를 통합?????????? */
