@@ -4,14 +4,14 @@ import java.util.Scanner;
 
 public class Charge {
 
-	static int paymoney = 0; //왜 static이 붙지 그냥은 못쓰나?
+	static int paymoney = 0; 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.println("==================== 페이머니 충전 ====================");
 		System.out.println();
 		
-		System.out.print("충전할 금액을 입력해주세요(최소 충전 금액 : 5000원) : ");
+		System.out.print("충전할 금액을 입s력해주세요(최소 충전 금액 : 5000원) : ");
 		int chargemoney = sc.nextInt();
 		if(chargemoney < 5000) {
 			System.out.println("최소 주문 금액은 5000원입니다."); 
