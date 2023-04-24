@@ -1,7 +1,6 @@
 package com.hhh.model.dto.hye;
 
 
-
 public class StoreDTO {
 	
 	private int storeNo;
