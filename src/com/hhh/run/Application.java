@@ -1,9 +1,9 @@
-package com.hhh.run.hye;
+package com.hhh.run;
 
 import com.hhh.controller.OrderManager;
 import com.hhh.controller.Service;
-import com.hhh.model.dto.hye.StoreDTO;
-import com.hhh.view.hye.Order;
+import com.hhh.model.dto.StoreDTO;
+import com.hhh.view.Order;
 
 public class Application {
 

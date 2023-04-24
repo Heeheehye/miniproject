@@ -1,4 +1,5 @@
-package com.hhh.model.dto.hye;
+package com.hhh.model.dto;
+
 
 
 public class StoreDTO {

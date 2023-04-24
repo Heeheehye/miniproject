@@ -1,12 +1,12 @@
-package com.hhh.view.hye;
+package com.hhh.view;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.hhh.controller.OrderManager;
-import com.hhh.model.dto.hye.MenuDTO;
-import com.hhh.model.dto.hye.MyPageDTO;
-import com.hhh.model.dto.hye.StoreDTO;
+import com.hhh.model.dto.MenuDTO;
+import com.hhh.model.dto.MyPageDTO;
+import com.hhh.model.dto.StoreDTO;
 
 public class Order {
 

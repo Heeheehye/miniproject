@@ -1,7 +1,7 @@
-package com.hhh.view.yoon;
+package com.hhh.view;
 
 import com.hhh.controller.drinkManager;
-import com.hhh.model.yoon.drinks;
+import com.hhh.model.dto.drinks;
 
 import java.util.*;
 
