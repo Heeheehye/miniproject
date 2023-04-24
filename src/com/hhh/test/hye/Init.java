@@ -2,7 +2,7 @@ package com.hhh.test.hye;
 
 import java.util.Arrays;
 
-import com.hhh.model.dto.hye.MenuDTO;
+import com.hhh.model.dto.drinks;
 
 public class Init {
 
@@ -16,14 +16,15 @@ public class Init {
 		storeList[4] = new StoreDTO(5, "동대문점", "02-555-5555");
 	}
 	
-	private MenuDTO[] menuList = new MenuDTO[6];
-	{  // MenuDTO 인스턴스 초기화 블록 
-		menuList[0] = new MenuDTO(1, "아메리카노", 4000 );
-		menuList[1] = new MenuDTO(2, "슈크림라떼", 5000 );
-		menuList[2] = new MenuDTO(3, "봄딸기라떼", 5500 );
-		menuList[3] = new MenuDTO(4, "돌체라떼", 5000 );
-		menuList[4] = new MenuDTO(5, "자바칩 프라푸치노", 6000 );
-		menuList[5] = new MenuDTO(6, "자몽허니블랙티", 5600 );
+	private drinks[] bev = new drinks[6];
+	{
+		bev[0] = new drinks(1, "아메리카노", 4000);
+		bev[1] = new drinks(2, "슈크림라떼", 5000);
+		bev[2] = new drinks(3, "봄 딸기 라떼", 5500);
+		bev[3] = new drinks(4, "돌체 라떼", 5000);
+		bev[4] = new drinks(5, "자바칩 프라푸치노", 6000);
+		bev[5] = new drinks(6, "자몽 허니 블랙티", 5600);
+
 	}
 	public Init() {
 		super();
@@ -35,16 +36,16 @@ public class Init {
 	public void setStoreList(StoreDTO[] storeList) {
 		this.storeList = storeList;
 	}
-	public MenuDTO[] getMenuList() {
-		return menuList;
+	public drinks[] getBev() {
+		return bev;
 	}
-	public void setMenuList(MenuDTO[] menuList) {
-		this.menuList = menuList;
+	public void setBev(drinks[] bev) {
+		this.bev = bev;
 	}
 	@Override
 	public String toString() {
-		return "Init [storeList=" + Arrays.toString(storeList) + ", menuList=" + Arrays.toString(menuList) + "]";
-	} 
+		return "Init [storeList=" + Arrays.toString(storeList) + ", bev=" + Arrays.toString(bev) + "]";
+	}
 	
 	
 }
