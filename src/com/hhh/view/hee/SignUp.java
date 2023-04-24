@@ -2,7 +2,7 @@ package com.hhh.view.hee;
 
 import java.util.Scanner;
 
-import com.hhh.controller.hee.Charge;
+import com.hhh.controller.Charge;
 import com.hhh.model.hee.MyPageDTO;
 
 public class SignUp {
