@@ -1,6 +1,5 @@
-package com.hhh.model.hee;
+package com.hhh.model.dto;
 
-import com.hhh.view.hee.SignUp;
 
 public class MyPageDTO {
 
@@ -13,7 +12,6 @@ public class MyPageDTO {
 	private int coupon;
 	private String orderlist;
 	
-	SignUp su = new SignUp();
 	
 	
 	public MyPageDTO(String name, String id, char gender, int paymoney, int coupon /*String orderlist*/) {
@@ -86,8 +84,9 @@ public class MyPageDTO {
 		this.orderlist = orderlist;
 	}
 	
-	public String myInfo() {
-		return  name + "(" + id + ")님" +  "\n성별 : " + gender + "\n페이잔액 : " + paymoney + "원" + "\n잔여쿠폰 : " + coupon + "개" + "\n주문내역 : " /*+메소드 호출로*/;
-	}
+	@Override
+	public String toString() {
+		return "========== 마이페이지 ==========" + "\n" + name + "(" + id + ")님" +  "\n성별 : " + gender + "\n페이잔액 : " + paymoney + "원" + "\n잔여쿠폰 : " + coupon + "개" + "\n주문내역 : " + "\n"/*+메소드 호출로*/;
+	};
 	
 }
