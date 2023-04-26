@@ -3,7 +3,7 @@ package com.hhh.view.yoon;
 
 import com.hhh.model.yoon.drinks;
 import com.hhh.view.yoon.*;
-import com.hhh.controller.yoon.*;
+import com.hhh.controller.*;
 
 import java.util.*;
 
@@ -36,12 +36,12 @@ public class Menu {
 		System.out.println("===========================");
 		System.out.println();
 
-		System.out.println("@메뉴 검색하기ㅁㅁ ");
+		System.out.println("@메뉴 검색하기");
 		searchMenu();
 		System.out.println("===========================");
 		System.out.println();
 
-		System.out.println("@메뉴보기 설정 변경ㅁㅁㅁ");
+		System.out.println("@메뉴보기 설정 변경");
 		dr.showOptions();
 
 	}
