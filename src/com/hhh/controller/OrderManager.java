@@ -3,44 +3,33 @@ package com.hhh.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.hhh.model.dto.MenuDTO;
+import com.hhh.model.dto.Init;
+import com.hhh.model.dto.MyPageDTO;
 import com.hhh.model.dto.OrderListDTO;
 import com.hhh.model.dto.StoreDTO;
+import com.hhh.model.dto.drinks;
 
 public class OrderManager {
 	/* 초기화 블럭, 리스트 있는 클래스를 통합?????????? */
 	private OrderListDTO order; 
 	private List<OrderListDTO> orderlist = new ArrayList<>(); 
 
-//	StoreDTO store = new StoreDTO(); 
-	private StoreDTO[] storelist = new StoreDTO[5]; 
+	private Init init = new Init(); 
 	
-		{  
-			// StoreDTO 인스턴스 초기화 블록 
-			storelist[0] = new StoreDTO(1, "종로점", "02-111-1111"); 
-			storelist[1] = new StoreDTO(2, "서초점", "02-222-2222");
-			storelist[2] = new StoreDTO(3, "강남점", "02-333-3333");
-			storelist[3] = new StoreDTO(4, "영등포점", "02-444-4444");
-			storelist[4] = new StoreDTO(5, "동대문점", "02-555-5555");
+	public drinks orderMenu(int selectMenu) {
+		drinks bev = new drinks(); 
+		for (int i = 0; i < init.getBev().length; i++) {
+			
+			if(init.getBev()[i].getNum() == selectMenu ) {
+				System.out.println("선택 메뉴 : " + init.getBev()[i]);	
+				bev = init.getBev()[i];
+				break; 
+			}  
 		}
-	
-	private drinkManager drink = new drinkManager(); 
-
-	
-	
-	public MenuDTO orderMenu(int selectMenu) {
-
-		int i = 0 ;  
-		for (;;) {
-			if([i++].getNum() == selectMenu ) {
-				System.out.println("선택하신 메뉴는 " + menulist[i] + "입니다.");	
-				return menulist[i]; 
-			} 
-			else {
-				System.out.println("선택하신 메뉴 번호는 없는 메뉴입니다. 다시 진행해주세요.");
-				return null; 
-			}
+		if(init.getBev().length < selectMenu) {
+			System.out.println("선택하신 메뉴번호는 없는 메뉴입니다.");	
 		}
+		return bev; 
 	}
 	
 	/**
@@ -48,62 +37,48 @@ public class OrderManager {
 	 * @param orderMenu 찾을 메뉴 
 	 * @return	지점리스트 
 	 */
-	public ArrayList<StoreDTO> serviceStore(MenuDTO orderMenu){
+	public ArrayList<StoreDTO> serviceStore(drinks orderMenu){
 		
 		ArrayList<StoreDTO> servicestore = new ArrayList<>();
-		Service service = new Service();
 		
-		for (int i = 0; i < service.getService().size(); i++) {
+		for (int i = 0; i < init.getService().size(); i++) {
 			/* */
-			if((service.getService().get(storelist[i])).toString().equals((orderMenu.getMenuName()).toString())) {		// ********************************************
-				servicestore.add(storelist[i]); 
-			} else {
-				System.out.println("선택하신 메뉴를 제공가능한 지점이 없습니다.");
-				servicestore = null;
-			}
+			if((init.getService().get(init.getStoreList()[i]))
+										   .toString().contains(orderMenu.getName())) {		// ********************************************
+				servicestore.add(init.getStoreList()[i]); 
+			} 
+//			else {
+//				System.out.println("선택하신 메뉴를 제공가능한 지점이 없습니다.");
+//				servicestore = null;
+//			}
 		}
 		return servicestore;
 	}
 	public StoreDTO orderStore(int selectStore) {
 		
-//		if(storelist[selectStore] == null) { 
-//			System.out.println("선택하신 번호는 없는 지점입니다. 다시 진행해주세요.");
-//		}
 
-		int i = 0; 
-	
-		for (;;) {
-			if(storelist[i++].getStoreNo() == selectStore) {
-				System.out.printf("%s 지점을 선택하셨습니다.", storelist[i].getStoreName());
-				break;
-			}
-		} // 잘못 선택했을 때 반환값 지정해야 함 
-		
-		return storelist[i];
+			System.out.printf("%s 지점을 선택하셨습니다.\n", init.getStoreList()[selectStore-1].getStoreName());
+			
+		return init.getStoreList()[selectStore-1];
 	}
 	
-	public int dcPrice(int selectCoupon, MenuDTO orderMenu) {
+	public int dcPrice(int selectCoupon, drinks orderMenu) {
 		
 		return	(orderMenu.getPrice())*(1-selectCoupon/100);
 	}
 	
-	public void payment(MenuDTO orderMenu, StoreDTO orderStore, int dcPrice) {
+	public void payment(drinks orderMenu, StoreDTO orderStore, int dcPrice) {
 		
 		order = new OrderListDTO(orderMenu, dcPrice, orderStore);
 		System.out.println("주문완료!! 주문하신 정보는 마이페이지 주문내역에서 확인해주세요.");
-		
+		MyPageDTO mypage = new MyPageDTO(); 
+		mypage.setPaymoney(mypage.getPaymoney()-dcPrice);
 	}
 	
-	public OrderListDTO getOrderlist() {
-		return order;
+	public List<OrderListDTO> getOrderlist() {
+		return orderlist;
 	}
-
-	public StoreDTO[] getStorelist() {
-		return storelist;
-	}
-
-	public MenuDTO[] getMenulist() {
-		return menulist;
-	}
+	
+	
 
 }

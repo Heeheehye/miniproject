@@ -5,7 +5,7 @@ import java.util.List;
 
 public class OrderListDTO {
 
-	private MenuDTO orderMenu;
+	private drinks orderMenu;
 	private int dcPrice; 
 	private StoreDTO orderStore;
 	
@@ -15,11 +15,12 @@ public class OrderListDTO {
 //		super();
 //		// TODO Auto-generated constructor stub
 //	}
-	public OrderListDTO(MenuDTO orderMenu, int dcPrice, StoreDTO orderStore) {
+	public OrderListDTO(drinks orderMenu, int dcPrice, StoreDTO orderStore) {
 		super();
 		this.orderMenu = orderMenu;
 		this.dcPrice = dcPrice;
 		this.orderStore = orderStore;
+		
 	}
 	
 //	// 컨트롤러에서 주문완료시 주문내역 셋팅되서 리스트로 관리됨  

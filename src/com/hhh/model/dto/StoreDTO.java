@@ -43,7 +43,7 @@ public class StoreDTO {
 	
 	@Override
 	public String toString() {
-		return "지점정보 [지점번호 : " + storeNo + ", 지점명 : " + storeName + ", 지점연락처 : " + storePhone + "]";
+		return " [지점번호 : " + storeNo + " / 지점명 : " + storeName + " / 연락처 : " + storePhone + "]\n";
 	}
 	
 	

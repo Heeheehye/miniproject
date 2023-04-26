@@ -9,8 +9,8 @@ public class MyPageDTO {
 	private String name;
 	private char gender;
 	private String id;
-	private int paymoney;
-	private int coupon;
+	private int paymoney = 10000;
+	private int coupon = 1;
 	private String orderlist;
 	
 	SignUp su = new SignUp();
