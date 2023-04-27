@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class Init {
 
-	private StoreDTO[] storeList = new StoreDTO[5]; 
+	private static StoreDTO[] storeList = new StoreDTO[5]; 
 	
 	{  // StoreDTO 인스턴스 초기화 블록 
 		storeList[0] = new StoreDTO(1, "종로점", "02-111-1111"); 
