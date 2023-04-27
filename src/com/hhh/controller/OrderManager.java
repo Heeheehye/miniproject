@@ -16,7 +16,7 @@ public class OrderManager {
 	/* 주문내역 담을 리스트 변수 */
 	public static List<OrderListDTO> orderlist = new ArrayList<>(); 
 
-//	private Init init = new Init(); 
+	private Init init = new Init(); 
 	
 	public drinks orderMenu(int selectMenu) {
 		drinks bev = new drinks(); 	// drinks  담을 변수 

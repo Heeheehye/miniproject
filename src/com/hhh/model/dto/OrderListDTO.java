@@ -10,10 +10,13 @@ public class OrderListDTO {
 	private StoreDTO orderStore;
 
 			
-	private OrderListDTO() {
+
+	public OrderListDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	
 	public OrderListDTO(drinks orderMenu, int dcPrice, StoreDTO orderStore) {
 		super();
 		this.orderMenu = orderMenu;

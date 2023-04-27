@@ -3,20 +3,21 @@ package com.hhh.model.dto;
 import java.util.List;
 
 import com.hhh.controller.OrderManager;
-import com.hhh.view.SignUp;
+import com.hhh.view.SignUpManager;
 
 public class MyPageDTO {
 
+	
+	
 	public MyPageDTO() {}
 	
 	private String name;
 	private char gender;
 	private String id;
-	private static int paymoney ;
-	private static int coupon;
-//	private String orderlist;
+	public static int paymoney ;
+	public static int coupon;
 	
-	SignUp su = new SignUp();
+	List<OrderListDTO> orderlist;
 	
 	
 	public MyPageDTO(String name, String id, char gender, int paymoney, int coupon /*String orderlist*/) {
@@ -85,12 +86,11 @@ public class MyPageDTO {
 	}
 
 
-//	public void setOrderlist(String orderlist) {
-//		this.orderlist = orderlist;
-//	}
-//	
-	public String myInfo() {
-		return  name + "(" + id + ")님" +  "\n성별 : " + gender + "\n페이잔액 : " + paymoney + "원" + "\n잔여쿠폰 : " + coupon + "개" + "\n주문내역 : " /*+메소드 호출로*/;
-	}
-	
+	@Override
+	public String toString() {
+		return  name + "(" + id + ")님" +  "\n성별 : " + gender + "\n페이잔액 : " + paymoney + "원" 
+				+ "\n잔여쿠폰 : " + coupon + "개" + getOrderlist();
+
+
+}
 }
