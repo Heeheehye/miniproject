@@ -2,9 +2,9 @@ package com.hhh.view;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 import com.hhh.controller.OrderManager;
-import com.hhh.model.dto.Init;
 import com.hhh.model.dto.MyPageDTO;
 import com.hhh.model.dto.StoreDTO;
 import com.hhh.model.dto.drinks;
@@ -20,11 +20,11 @@ public class Order {
 	private OrderManager omg = new OrderManager();
 //	private Init init = new Init(); 
 	/* ???????? 근데 이거 새로 생성하면 초기화되잖아.....?????? 일단해 */
-	private MyPageDTO mypage = new MyPageDTO();
+//	private MyPageDTO mypage = new MyPageDTO();
 	
 	public void orderMain() {
 		
-		drinks orderMenu = new drinks(); 		// 주문메뉴 담을 변수
+		drinks orderMenu = new drinks(); 			// 주문메뉴 담을 변수
 		StoreDTO orderStore = new StoreDTO();		// 주문매장 담을 변수 
 		int dcPrice = 1; 				// 쿠폰적용 금액 담을 변수 
 		boolean ispay = false; 			// 주문가능한지 판단할 변수 
@@ -50,7 +50,7 @@ public class Order {
 					orderStore = omg.orderStore(selectStore(orderMenu));
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
-					System.out.println("없는 지점입니다. 다시 선택하세요."); break;
+					System.out.println("불가능한 지점입니다. 다시 선택하세요."); break;
 				} break; 
 				case 3: dcPrice = omg.dcPrice(selectCoupon(), orderMenu); break; 
 				case 4: ispay = isPay(orderMenu, orderStore, dcPrice);
@@ -75,14 +75,11 @@ public class Order {
 		ArrayList<StoreDTO> serviceStore = omg.serviceStore(orderMenu);  // 반환된 지점리스트를 저장할 리스트변수
 		
 		System.out.println("========== 주문가능 지점 ========= ");
-		System.out.println(serviceStore);
+		serviceStore.stream().map(StoreDTO->StoreDTO.toString()).forEach(System.out::println);		
 		System.out.print("주문하실 지점의 번호를 입력해주세요.");
 		
 		int selectStore = sc.nextInt();
-//		throw new Exception();
-//		if(serviceStore.get(selectStore)==null) {
-////			System.out.println("없는 지점입니다.");
-//		}
+		
 		return selectStore; 
 		
 	}
@@ -92,7 +89,7 @@ public class Order {
 		/* 임시 */
 		int count = 1; 	// 할인율
 		
-		if(mypage.getCoupon() != 0 ) {
+		if(MyPageDTO.getCoupon() != 0 ) {
 			System.out.println("할인쿠폰을 적용하시겠습니까?");
 			
 			String answer = sc.next().charAt(0) + "";
@@ -116,7 +113,7 @@ public class Order {
 	
 	public boolean isPay(drinks orderMenu, StoreDTO orderStore, int dcPrice) {
 		
-		if (mypage.getPaymoney() < dcPrice) {
+		if (MyPageDTO.getPaymoney() < dcPrice) {
 			System.out.println("페이머니가 부족합니다. 페이머니를 먼저 충전해주세요.");
 			return false; 
 		} else if(orderMenu == null) {

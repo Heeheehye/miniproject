@@ -18,7 +18,7 @@ public class Init {
 		storeList[4] = new StoreDTO(5, "동대문점", "02-555-5555");
 	}
 	
-	private drinks[] bev = new drinks[6];
+	private static drinks[] bev = new drinks[6];
 	{
 		bev[0] = new drinks(1, "아메리카노", 4000);
 		bev[1] = new drinks(2, "슈크림라떼", 5000);
@@ -35,7 +35,7 @@ public class Init {
 	private List<drinks> storeMenu3;  	// 지점별 제공가능 여러 메뉴들 리스트로 셋팅 	
 	private List<drinks> storeMenu4;  	// 지점별 제공가능 여러 메뉴들 리스트로 셋팅 	
 	// 지점(Storelist) - 지점별 제공가능메뉴(storeMenu) 
-	private Map<StoreDTO, List<drinks>> service = new HashMap<>();
+	private static Map<StoreDTO, List<drinks>> service = new HashMap<>();
 	
 	{
 /* *************** 매장 세팅 *************** */
@@ -80,7 +80,7 @@ public class Init {
 //		storeMenu.add(getBev()[menuindex]);
 //	}
 
-	public Map<StoreDTO, List<drinks>> getService() {
+	public static Map<StoreDTO, List<drinks>> getService() {
 		return service;
 	}
 
@@ -97,18 +97,20 @@ public class Init {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public StoreDTO[] getStoreList() {
+	public static StoreDTO[] getStoreList() {
 		return storeList;
 	}
 	public void setStoreList(StoreDTO[] storeList) {
 		this.storeList = storeList;
 	}
-	public drinks[] getBev() {
+	public static drinks[] getBev() {
 		return bev;
 	}
 	public void setBev(drinks[] bev) {
 		this.bev = bev;
 	}
+	
+	
 	@Override
 	public String toString() {
 		return "Init storeList=" + Arrays.toString(storeList) + "\n bev=" + Arrays.toString(bev) + "]";

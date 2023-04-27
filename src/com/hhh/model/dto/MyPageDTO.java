@@ -1,5 +1,8 @@
 package com.hhh.model.dto;
 
+import java.util.List;
+
+import com.hhh.controller.OrderManager;
 import com.hhh.view.SignUp;
 
 public class MyPageDTO {
@@ -9,9 +12,9 @@ public class MyPageDTO {
 	private String name;
 	private char gender;
 	private String id;
-	private int paymoney = 10000;
-	private int coupon = 1;
-	private String orderlist;
+	private static int paymoney ;
+	private static int coupon;
+//	private String orderlist;
 	
 	SignUp su = new SignUp();
 	
@@ -57,35 +60,35 @@ public class MyPageDTO {
 	}
 
 
-	public int getPaymoney() {
+	public static int getPaymoney() {
 		return paymoney;
 	}
 
 
-	public void setPaymoney(int paymoney) {
-		this.paymoney = paymoney;
+	public static void setPaymoney(int paymoney) {
+		MyPageDTO.paymoney = paymoney;
 	}
 
 
-	public int getCoupon() {
+	public static int getCoupon() {
 		return coupon;
 	}
 
 
-	public void setCoupon(int coupon) {
-		this.coupon = coupon;
+	public static void setCoupon(int coupon) {
+		MyPageDTO.coupon += coupon;
 	}
 
 
-	public String getOrderlist() {
-		return orderlist;
+	public List<OrderListDTO> getOrderlist() {
+		return OrderManager.orderlist;
 	}
 
 
-	public void setOrderlist(String orderlist) {
-		this.orderlist = orderlist;
-	}
-	
+//	public void setOrderlist(String orderlist) {
+//		this.orderlist = orderlist;
+//	}
+//	
 	public String myInfo() {
 		return  name + "(" + id + ")님" +  "\n성별 : " + gender + "\n페이잔액 : " + paymoney + "원" + "\n잔여쿠폰 : " + coupon + "개" + "\n주문내역 : " /*+메소드 호출로*/;
 	}

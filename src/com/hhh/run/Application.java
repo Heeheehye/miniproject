@@ -9,9 +9,10 @@ public class Application {
 		
 		Order run = new Order();
 		run.orderMain();
-
+		
 		
 //		Init init = new Init();
+	
 //		System.out.println(init.getService());
 //		System.out.println(init.getStoreMenu());
 //		System.out.println(init.getBev());
