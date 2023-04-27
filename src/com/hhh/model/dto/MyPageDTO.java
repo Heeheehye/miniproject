@@ -1,21 +1,20 @@
-
 package com.hhh.model.dto;
 
-import com.hhh.view.SignUp;
+
 
 public class MyPageDTO {
 
+	
+	
 	public MyPageDTO() {}
 	
 	private String name;
 	private char gender;
 	private String id;
-	private int paymoney = 10000;
-	private int coupon = 1;
-	private String orderlist;
-	
-	SignUp su = new SignUp();
-	
+	private int paymoney;
+	private int coupon;
+	private OrderListDTO orderlist = new OrderListDTO();
+
 	
 	public MyPageDTO(String name, String id, char gender, int paymoney, int coupon /*String orderlist*/) {
 
@@ -74,22 +73,25 @@ public class MyPageDTO {
 
 
 	public void setCoupon(int coupon) {
-		this.coupon = coupon;
+		this.coupon = coupon++;
 	}
 
 
-	public String getOrderlist() {
+	public OrderListDTO getOrderlist() {
 		return orderlist;
 	}
 
 
-	public void setOrderlist(String orderlist) {
+	public void setOrderlist(OrderListDTO orderlist) {
 		this.orderlist = orderlist;
 	}
 	
-	public String myInfo() {
-		return  name + "(" + id + ")님" +  "\n성별 : " + gender + "\n페이잔액 : " + paymoney + "원" + "\n잔여쿠폰 : " + coupon + "개" + "\n주문내역 : " /*+메소드 호출로*/;
-	}
 	
-}
+	@Override
+	public String toString() {
+		return  name + "(" + id + ")님" +  "\n성별 : " + gender + "\n페이잔액 : " + paymoney + "원" 
+				+ "\n잔여쿠폰 : " + coupon + "개" + orderlist;
 
+
+}
+}
