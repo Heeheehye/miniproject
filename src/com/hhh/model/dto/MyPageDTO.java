@@ -8,26 +8,26 @@ public class MyPageDTO {
 	
 	public MyPageDTO() {}
 	
-	private String name;
-	private char gender;
-	private String id;
-	private int paymoney;
-	private int coupon;
-	private OrderListDTO orderlist = new OrderListDTO();
+	static private String name;
+	static private char gender;
+	static private String id;
+	static private int paymoney;
+	static private int coupon;
+	static private OrderListDTO orderlist = new OrderListDTO();
 
 	
-	public MyPageDTO(String name, String id, char gender, int paymoney, int coupon /*String orderlist*/) {
+	public MyPageDTO(String name, String id, char gender, int coupon /*String orderlist*/) {
 
 		this.name = name;
 		this.gender = gender;
 		this.id = id;
-		this.paymoney = paymoney;
+//		this.paymoney = paymoney;
 		this.coupon = coupon;
 //		this.orderlist = orderlist;
 	}
 
 
-	public String getName() {
+	static public String getName() {
 		return name;
 	}
 
@@ -37,7 +37,7 @@ public class MyPageDTO {
 	}
 
 
-	public char getGender() {
+	static public char getGender() {
 		return gender;
 	}
 
@@ -47,7 +47,7 @@ public class MyPageDTO {
 	}
 
 
-	public String getId() {
+	static public String getId() {
 		return id;
 	}
 
@@ -57,7 +57,7 @@ public class MyPageDTO {
 	}
 
 
-	public int getPaymoney() {
+	static public int getPaymoney() {
 		return paymoney;
 	}
 
@@ -67,7 +67,7 @@ public class MyPageDTO {
 	}
 
 
-	public int getCoupon() {
+	static public int getCoupon() {
 		return coupon;
 	}
 
@@ -77,7 +77,7 @@ public class MyPageDTO {
 	}
 
 
-	public OrderListDTO getOrderlist() {
+	static public OrderListDTO getOrderlist() {
 		return orderlist;
 	}
 

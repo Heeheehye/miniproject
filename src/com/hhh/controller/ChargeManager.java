@@ -30,8 +30,8 @@ public class ChargeManager {
 				case 2: return;
 			 } 
 			}else {
-				paymoney += chargemoney;
-				md.setPaymoney(paymoney);
+//				paymoney += chargemoney;
+				md.setPaymoney(md.getPaymoney() + chargemoney);
 				System.out.println("충전이 완료되었습니다. 현재 페이머니 잔액은 " + md.getPaymoney() + "원입니다.\n"); break;
 				
 			}
@@ -43,7 +43,7 @@ public class ChargeManager {
 		
 		
 	
-	public int payInfo() {
-		return md.getPaymoney();		
-	}
+//	public int payInfo() {
+//		return md.getPaymoney();		
+//	}
 }

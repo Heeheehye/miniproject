@@ -29,9 +29,11 @@ public class MainPage {
 			
 			switch(num) {
 			case 1: su.signUp(); break;
-			case 2: System.out.println(su.getMd()); break;
+			case 2: System.out.printf("%s (%s)님\n성별 : %c\n페이잔액 : %d원\n잔여쿠폰 : %d개\n" , MyPageDTO.getName(), MyPageDTO.getId(), MyPageDTO.getGender(), MyPageDTO.getPaymoney(),MyPageDTO.getCoupon()); 
+			  		System.out.println(MyPageDTO.getOrderlist());
+				break;
 			case 3: pm.charge(); break;
-			case 4: // 전체메뉴조회
+			case 4: 
 			case 5: order.orderMain(); break;
 			case 0: System.out.println("프로그램을 종료합니다.\n"); return;
 			default: break;

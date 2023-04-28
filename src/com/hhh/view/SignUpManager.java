@@ -8,7 +8,7 @@ import com.hhh.model.dto.MyPageDTO;
 public class SignUpManager {
 
 	
-	MyPageDTO md = new MyPageDTO();
+	MyPageDTO md ;
 	
 	
 	public SignUpManager() {
@@ -46,7 +46,7 @@ public class SignUpManager {
 		System.out.println();
 		System.out.println("회원가입이 완료되었습니다🎉 신규가입 쿠폰이 지급되었습니다!📩");
 		System.out.println();
-		md = new MyPageDTO(name, id, gender, pm.payInfo(), coupon); //m.payInfo()가 0원으로 뜸
+		md = new MyPageDTO(name, id, gender, coupon); //m.payInfo()가 0원으로 뜸
 		return;
 	}
 
