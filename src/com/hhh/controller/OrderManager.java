@@ -1,7 +1,9 @@
 package com.hhh.controller;
 
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 import com.hhh.model.dto.Init;
 import com.hhh.model.dto.MyPageDTO;
@@ -12,7 +14,8 @@ import com.hhh.model.dto.drinks;
 public class OrderManager {
 	/* 초기화 블럭, 리스트 있는 클래스를 통합?????????? */
 	private OrderListDTO order; 
-	
+	/* 서비스지점 담을 변수 */
+	private LinkedHashSet<StoreDTO> servicestore;
 	/* 주문내역 담을 리스트 변수 */
 	public static List<OrderListDTO> orderlist = new ArrayList<>(); 
 
@@ -39,11 +42,8 @@ public class OrderManager {
 	 * @param orderMenu 찾을 메뉴 
 	 * @return	지점리스트 
 	 */
-	public ArrayList<StoreDTO> serviceStore(drinks orderMenu){
-		
-		/* 서비스지점 담을 변수 */
-		ArrayList<StoreDTO> servicestore = new ArrayList<>();
-		
+	public LinkedHashSet<StoreDTO> serviceStore(drinks orderMenu){
+		servicestore = new LinkedHashSet<>();  // 초기화 
 		for (int i = 0; i < Init.getService().size(); i++) {
 			
 			if((Init.getService().get(Init.getStoreList()[i]))
@@ -54,13 +54,19 @@ public class OrderManager {
 		}
 		return servicestore;
 	}
-	public StoreDTO orderStore(int selectStore) {
-		
-			System.out.printf("%s 지점을 선택하셨습니다.\n", Init.getStoreList()[selectStore-1].getStoreName());
-			
-		return Init.getStoreList()[selectStore-1];
+	public StoreDTO orderStore(String selectStore) {
+		StoreDTO store = new StoreDTO();  // 초기화 
+				for (int i = 0; i < Init.getService().size(); i++) {
+					if(servicestore.toString().contains(selectStore)){
+						if(Init.getStoreList()[i].getStoreName().contains(selectStore)){
+							store = Init.getStoreList()[i];
+							System.out.printf("%s 지점을 선택하셨습니다.\n", store.getStoreName());
+							break;
+							}
+						}
+					}
+				return store; 
 	}
-	
 	public int dcPrice(int selectCoupon, drinks orderMenu) {
 		
 		return	(orderMenu.getPrice())*(1-selectCoupon/100);

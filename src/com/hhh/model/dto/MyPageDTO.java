@@ -14,7 +14,7 @@ public class MyPageDTO {
 	private String name;
 	private char gender;
 	private String id;
-	public static int paymoney ;
+	public static int paymoney = 10000 ;
 	public static int coupon;
 	
 	List<OrderListDTO> orderlist;

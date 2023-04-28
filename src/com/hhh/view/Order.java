@@ -1,8 +1,7 @@
 package com.hhh.view;
 
-import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.stream.Collectors;
+import java.util.Set;
 
 import com.hhh.controller.OrderManager;
 import com.hhh.model.dto.MyPageDTO;
@@ -70,15 +69,15 @@ public class Order {
 		return selectMenu; 
 	}
 	
-	public int selectStore(drinks orderMenu) throws Exception {
+	public String selectStore(drinks orderMenu) throws Exception {
 		
-		ArrayList<StoreDTO> serviceStore = omg.serviceStore(orderMenu);  // 반환된 지점리스트를 저장할 리스트변수
+		Set<StoreDTO> serviceStore = omg.serviceStore(orderMenu);  // 반환된 지점리스트를 저장할 리스트변수
 		
 		System.out.println("========== 주문가능 지점 ========= ");
 		serviceStore.stream().map(StoreDTO->StoreDTO.toString()).forEach(System.out::println);		
 		System.out.print("주문하실 지점의 번호를 입력해주세요.");
-		
-		int selectStore = sc.nextInt();
+		sc.nextLine();
+		String selectStore = sc.nextLine();
 		
 		return selectStore; 
 		
