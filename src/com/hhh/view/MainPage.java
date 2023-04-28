@@ -21,8 +21,7 @@ public class MainPage {
 			System.out.println("   *  *      *      1. 회원가입     *               *");
 			System.out.println("   *           *    2. 마이페이지           *        *");
 			System.out.println("  *       *         3. 충전하기       *            ");
-			System.out.println("        *           4. 전체메뉴조회       *        *");
-			System.out.println("   *         *      5. 주문하기                      *");
+			System.out.println("   *         *      4. 주문하기                      *");
 			System.out.println("  *        *        0. 앱종료하기    *         *   *");
 			
 			int num = sc.nextInt();
@@ -33,8 +32,7 @@ public class MainPage {
 			  		System.out.println(MyPageDTO.getOrderlist());
 				break;
 			case 3: pm.charge(); break;
-			case 4: 
-			case 5: order.orderMain(); break;
+			case 4: order.orderMain(); break;
 			case 0: System.out.println("프로그램을 종료합니다.\n"); return;
 			default: break;
 			}
