@@ -4,6 +4,8 @@ import java.util.Scanner;
 import java.util.Set;
 
 import com.hhh.controller.OrderManager;
+import com.hhh.controller.drinkManager;
+import com.hhh.model.dto.Init;
 import com.hhh.model.dto.MyPageDTO;
 import com.hhh.model.dto.StoreDTO;
 import com.hhh.model.dto.drinks;
@@ -20,6 +22,8 @@ public class Order {
 //	private Init init = new Init(); 
 	/* ???????? 근데 이거 새로 생성하면 초기화되잖아.....?????? 일단해 */
 //	private MyPageDTO mypage = new MyPageDTO();
+	
+	drinkManager 드링크매니저 = new drinkManager();
 	
 	public void orderMain() {
 		
@@ -42,8 +46,8 @@ public class Order {
 			
 			switch(sc.nextInt()) {
 			
-				case 1: orderMenu = omg.orderMenu(selectMenu())
-									; break;
+				case 1: orderMenu = omg.orderMenu(selectMenu()); 
+				break;
 							
 				case 2: try {
 					orderStore = omg.orderStore(selectStore(orderMenu));
@@ -61,8 +65,34 @@ public class Order {
 			}
 		}
 	}
+
+	
+	/*
+	 * 희윤 : init 추가,bev 추가
+	 * drinkManager클래스를 "드링크매니저"라는 변수로 불러왔음
+	 * 옵션별 보기가 끝나면(4번을 누르면 종료) 다시 돌아와 이제 음료를 고를 수 있게 했음
+	 * 
+	 * */
 	public int selectMenu() {
+
+		Init init = new Init(); 
+		drinks bev = new drinks(); 
+		System.out.println("--------메뉴--------");
+		System.out.println();
+
+		for (int i = 0; i < init.getBev().length; i++) {
+			System.out.println(init.getBev()[i].getNum() + ". " + init.getBev()[i].getName() + " " + init.getBev()[i].getPrice() / 1000 + ","
+					+ String.valueOf(init.getBev()[i].getPrice()).substring(1, 4));
+		}
+		System.out.println();
 		
+		드링크매니저.showOptions();
+		
+
+		for (int i = 0; i < init.getBev().length; i++) {
+			System.out.println(init.getBev()[i].getNum() + ". " + init.getBev()[i].getName() + " " + init.getBev()[i].getPrice() / 1000 + ","
+					+ String.valueOf(init.getBev()[i].getPrice()).substring(1, 4));
+		}
 		System.out.print("주문하실 메뉴 번호를 입력해주세요.");
 		int selectMenu = sc.nextInt(); 
 		
