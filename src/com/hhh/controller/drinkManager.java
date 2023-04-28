@@ -26,7 +26,7 @@ public class drinkManager {
 			if (bev[i].getName().contains(drinkName)) {
 				search[cnt] = bev[i];
 				cnt++;
-			}
+			}//
 		}
 		return search;
 	}
