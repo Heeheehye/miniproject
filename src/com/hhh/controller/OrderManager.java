@@ -23,7 +23,7 @@ public class OrderManager {
 	
 	public drinks orderMenu(int selectMenu) {
 		drinks bev = new drinks(); 	// drinks  담을 변수 
-		
+		 
 		/*0428 유희윤 
 		System.out.println("--------메뉴--------");
 		System.out.println();
