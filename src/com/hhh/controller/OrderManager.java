@@ -1,6 +1,7 @@
 package com.hhh.controller;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.hhh.model.dto.Init;
@@ -25,7 +26,7 @@ public class OrderManager {
 				bev = init.getBev()[i];
 				break; 
 			}  
-		}
+		} 
 		if(init.getBev().length < selectMenu) {
 			System.out.println("선택하신 메뉴번호는 없는 메뉴입니다.");	
 		}
