@@ -19,6 +19,22 @@ public class OrderManager {
 	
 	public drinks orderMenu(int selectMenu) {
 		drinks bev = new drinks(); 
+		
+		/*0428 유희윤 
+		System.out.println("--------메뉴--------");
+		System.out.println();
+
+		for (int i = 0; i < init.getBev().length; i++) {
+			System.out.println(init.getBev()[i].getNum() + ". " + init.getBev()[i].getName() + " " + init.getBev()[i].getPrice() / 1000 + ","
+					+ String.valueOf(init.getBev()[i].getPrice()).substring(1, 4));
+		}
+		System.out.println();
+		
+		*/
+		
+		
+		
+		
 		for (int i = 0; i < init.getBev().length; i++) {
 			
 			if(init.getBev()[i].getNum() == selectMenu ) {

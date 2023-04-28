@@ -34,4 +34,8 @@ public class Charge {
 	public int payInfo() {
 		return paymoney;		
 	}
+	
+	
+	
+	
 }

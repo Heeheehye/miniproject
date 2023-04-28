@@ -3,7 +3,6 @@ package com.hhh.controller;
 import java.util.*;
 
 import com.hhh.model.dto.drinks;
-import com.hhh.view.Menu;
 
 public class drinkManager {
 
@@ -26,7 +25,7 @@ public class drinkManager {
 			if (bev[i].getName().contains(drinkName)) {
 				search[cnt] = bev[i];
 				cnt++;
-			}
+			}//
 		}
 		return search;
 	}
@@ -53,37 +52,61 @@ public class drinkManager {
 		System.out.println("1. 가나다순으로 보기");
 		System.out.println("2. 높은 가격순으로 보기");
 		System.out.println("3. 낮은 가격순으로 보기");
+		System.out.println("4. 종료");
 		System.out.println();
 
-		Scanner scan = new Scanner(System.in);
-		int select = scan.nextInt();
 
 		Arrays.asList(bev);
+		Scanner scan = new Scanner(System.in);
 
 		// 1 :가나다순 2: 높은 가격순 3: 낮은 가격순
-		if (select == 1) {
+		while (true) {
+			int select = scan.nextInt();
 
-			Arrays.sort(bev, (a, b) -> a.getName().compareTo(b.getName()));
-			System.out.println(" " + Arrays.asList(bev).toString().replace("[", "").replace("]", "").replace(",", ""));
+			if (select == 1) {
+				System.out.println("이름순으로 나열했어요 ");
+				Arrays.sort(bev, (a, b) -> a.getName().compareTo(b.getName()));
+				System.out.println(
+						" " + Arrays.asList(bev).toString().replace("[", "").replace("]", "").replace(",", ""));
+			} else if (select == 2) {
+				System.out.println("높은 가격순으로 나열했어요 ");
+				Arrays.sort(bev, (a, b) -> (a.getPrice() != b.getPrice()) ? (b.getPrice() - a.getPrice())
+						: (a.getName().compareTo(b.getName()))
 
-		} else if (select == 2) {
-			Arrays.sort(bev, (a, b) -> (a.getPrice() != b.getPrice()) ? (b.getPrice() - a.getPrice())
-					: (a.getName().compareTo(b.getName()))
+				);
 
-			);
+				System.out.println(
+						" " + Arrays.asList(bev).toString().replace("[", "").replace("]", "").replace(",", ""));
+			
+			} else if (select == 3) {
+				System.out.println("낮은 가격순으로 나열했어요 ");
+				Arrays.sort(bev, (a, b) -> (a.getPrice() != b.getPrice()) ? (a.getPrice() - b.getPrice())
+						: (a.getName().compareTo(b.getName()))
 
-			System.out.println(" " + Arrays.asList(bev).toString().replace("[", "").replace("]", "").replace(",", ""));
+				);
 
-		} else if (select == 3) {
-			Arrays.sort(bev, (a, b) -> (a.getPrice() != b.getPrice()) ? (a.getPrice() - b.getPrice())
-					: (a.getName().compareTo(b.getName()))
-
-			);
-
-			System.out.println(" " + Arrays.asList(bev).toString().replace("[", "").replace("]", "").replace(",", ""));
-		} else {
-			return;
+				System.out.println(
+						" " + Arrays.asList(bev).toString().replace("[", "").replace("]", "").replace(",", ""));
+			
+			}
+			
+			else if(select==4) {
+				System.out.println("메뉴 보기를 종료하고 이제 음료 선택으로 돌아갑니다.");
+			
+				break;
+				
+			}
+			
+			
+			else {
+				System.out.println("잘못된 입력입니다.");
+				break;
+			}
+			
+			
+			
 		}
+
 		
 		
 	}
