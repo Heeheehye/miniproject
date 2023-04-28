@@ -12,7 +12,7 @@ public class SignUpManager {
 	
 	
 	public SignUpManager() {
-		// TODO Auto-generated constructor stub
+
 	}
 	public MyPageDTO getMd() {
 		return md;
@@ -46,7 +46,7 @@ public class SignUpManager {
 		System.out.println();
 		System.out.println("회원가입이 완료되었습니다🎉 신규가입 쿠폰이 지급되었습니다!📩");
 		System.out.println();
-		md = new MyPageDTO(name, id, gender, pm.payInfo(), coupon);
+		md = new MyPageDTO(name, id, gender, pm.payInfo(), coupon); //m.payInfo()가 0원으로 뜸
 		return;
 	}
 

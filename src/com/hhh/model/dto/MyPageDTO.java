@@ -90,7 +90,7 @@ public class MyPageDTO {
 	@Override
 	public String toString() {
 		return  name + "(" + id + ")님" +  "\n성별 : " + gender + "\n페이잔액 : " + paymoney + "원" 
-				+ "\n잔여쿠폰 : " + coupon + "개" + orderlist;
+				+ "\n잔여쿠폰 : " + coupon + "개\n" + orderlist;
 
 
 }
