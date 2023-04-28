@@ -34,7 +34,7 @@ public class MainPage {
 			case 3: pm.charge(); break; 
 			case 4: // 전체메뉴조회
 			case 5: order.orderMain(); break; 
-			case 0: System.out.println("프로그램을 종료합니다.\n"); break outer;
+			case 0: System.out.println("프로그램을 종료합니다...\n"); break outer;
 			default: break;
 			}
 		}
