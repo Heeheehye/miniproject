@@ -5,8 +5,7 @@ import java.util.Set;
 
 import com.hhh.controller.OrderManager;
 import com.hhh.controller.drinkManager;
-import com.hhh.model.dto.Init;
-import com.hhh.model.dto.MyPageDTO;
+import com.hhh.model.dto.StaticUnity;
 import com.hhh.model.dto.StoreDTO;
 import com.hhh.model.dto.drinks;
 
@@ -31,20 +30,26 @@ public class Order {
 		StoreDTO orderStore = new StoreDTO();		// 주문매장 담을 변수 
 		int dcPrice = 1; 				// 쿠폰적용 금액 담을 변수 
 		boolean ispay = false; 			// 주문가능한지 판단할 변수 
-
+		label:
 		while(true) {
+			System.out.println("\t\t          ☕ 주문하기 🍰 ");
+			System.out.println();
+			System.out.println("   *  *      *      1. 주문메뉴 선택     *               *");
+			System.out.println("   *           *    2. 주문매장 선택           *        *");
+			System.out.println("  *       *         3. 할인쿠폰 선택       *            ");
+			System.out.println("   *         *      4. 결제하기                      *");
+			System.out.println("  *        *        0. 메인으로 돌아가기    *         *   *");
+					
+			int num;
+			try {
+				System.out.print("주문하기 페이지입니다. 원하는 번호를 입력하세요.");
+				num = sc.nextInt();
+			} catch (Exception e1) {
+				System.out.println("숫자로만 입력하세요.");
+				break;
+			}
 			
-			System.out.println("********** 주문하기 화면 ***********");
-			System.out.println("*\t1. 주문메뉴 선택\t\t*");
-			System.out.println("*\t2. 주문매장 선택\t\t*");
-			System.out.println("*\t3. 할인쿠폰 선택\t\t*");
-			System.out.println("*\t4. 결제하기\t\t*");
-			System.out.println("*\t5. 그만두고 돌아가기\t*");
-			System.out.println("*********************************");
-			
-			System.out.print("주문하기 과정입니다. 원하는 번호를 입력하세요.");
-			
-			switch(sc.nextInt()) {
+			switch(num) {
 			
 				case 1: orderMenu = omg.orderMenu(selectMenu()); 
 				break;
@@ -55,13 +60,16 @@ public class Order {
 					// TODO Auto-generated catch block
 					System.out.println("불가능한 지점입니다. 다시 선택하세요."); break;
 				} break; 
-				case 3: dcPrice = omg.dcPrice(selectCoupon(), orderMenu); break; 
+				case 3: dcPrice = omg.dcPrice(selectCoupon(), orderMenu); 
+						System.out.println("결제할 금액 : " + dcPrice );			
+						break; 
 				case 4: ispay = isPay(orderMenu, orderStore, dcPrice);
 						if(ispay) {		// ispay가 true이면 결제 실행 
-							omg.payment(orderMenu, orderStore, dcPrice);
-						}
-				case 5: return; 
-				default : System.out.println("잘못된 입력입니다. 숫자 1~5 중에 입력해주세요.");break;  
+							omg.payment(orderMenu, dcPrice, orderStore);
+						} 
+						else { continue label;}
+				case 0: return; 
+				default : System.out.println("잘못된 입력입니다. 숫자 1~4 중에 입력해주세요.");break;  
 			}
 		}
 	}
@@ -75,24 +83,20 @@ public class Order {
 	 * */
 	public int selectMenu() {
 
-		Init init = new Init(); 
-		drinks bev = new drinks(); 
+//		drinks bev = new drinks(); 
 		System.out.println("--------메뉴--------");
 		System.out.println();
 
-		for (int i = 0; i < init.getBev().length; i++) {
-			System.out.println(init.getBev()[i].getNum() + ". " + init.getBev()[i].getName() + " " + init.getBev()[i].getPrice() / 1000 + ","
-					+ String.valueOf(init.getBev()[i].getPrice()).substring(1, 4));
+		for (int i = 0; i < StaticUnity.init.getBev().length; i++) {
+			System.out.println(StaticUnity.init.getBev()[i].getNum() + ". " + StaticUnity.init.getBev()[i].getName() 
+								+ " " + StaticUnity.init.getBev()[i].getPrice() / 1000 + ","
+								+ String.valueOf(StaticUnity.init.getBev()[i].getPrice()).substring(1, 4));
 		}
 		System.out.println();
 		
 		드링크매니저.showOptions();
 		
 
-		for (int i = 0; i < init.getBev().length; i++) {
-			System.out.println(init.getBev()[i].getNum() + ". " + init.getBev()[i].getName() + " " + init.getBev()[i].getPrice() / 1000 + ","
-					+ String.valueOf(init.getBev()[i].getPrice()).substring(1, 4));
-		}
 		System.out.print("주문하실 메뉴 번호를 입력해주세요.");
 		int selectMenu = sc.nextInt(); 
 		
@@ -105,7 +109,7 @@ public class Order {
 		
 		System.out.println("========== 주문가능 지점 ========= ");
 		serviceStore.stream().map(StoreDTO->StoreDTO.toString()).forEach(System.out::println);		
-		System.out.print("주문하실 지점의 번호를 입력해주세요.");
+		System.out.print("주문하실 지점의 지점명을 입력해주세요.");
 		sc.nextLine();
 		String selectStore = sc.nextLine();
 		
@@ -116,10 +120,10 @@ public class Order {
 	public int selectCoupon() {
 		
 		/* 임시 */
-		int count = 1; 	// 할인율
+		int count = 0; 	// 할인율
 		
-		if(MyPageDTO.getCoupon() != 0 ) {
-			System.out.println("할인쿠폰을 적용하시겠습니까?");
+		if(StaticUnity.mypage.getCoupon() != 0 ) {
+			System.out.println("할인쿠폰을 적용하시겠습니까? (y/n)");
 			
 			String answer = sc.next().charAt(0) + "";
 			
@@ -128,10 +132,10 @@ public class Order {
 				return count=10; 		// 할인쿠폰 적용시 10% 할인 반환 
 			} else if(answer.equalsIgnoreCase("n")) {
 				System.out.println("할인이 적용되지 않습니다.");
-				return count; 			// 할인쿠폰 적용이 안되면 기본값 1 반환 
+				return count; 			// 할인쿠폰 적용이 안되면 기본값 0 반환 
 			} else { 
 				System.out.println("잘못입력하셨습니다. 할인이 적용되지 않습니다.");
-				return count; 			// 할인쿠폰 적용이 안되면 기본값 1 반환 
+				return count; 			// 할인쿠폰 적용이 안되면 기본값 0 반환 
 			}
 		} else {
 			System.out.println("적용가능한 할인쿠폰이 없습니다.");
@@ -142,13 +146,13 @@ public class Order {
 	
 	public boolean isPay(drinks orderMenu, StoreDTO orderStore, int dcPrice) {
 		
-		if (MyPageDTO.getPaymoney() < dcPrice) {
+		if (StaticUnity.mypage.getPaymoney() < dcPrice) {
 			System.out.println("페이머니가 부족합니다. 페이머니를 먼저 충전해주세요.");
 			return false; 
-		} else if(orderMenu == null) {
+		} else if(orderMenu.getName() == null) {
 			System.out.println("메뉴가 선택되지 않았습니다. 메뉴를 먼저 선택해주세요.");
 			return false; 
-		} else if(orderStore == null) {
+		} else if(orderStore.getStoreName() == null) {
 			System.out.println("지점이 선택되지 않았습니다. 지점 먼저 선택해주세요.");
 			return false; 
 		} else {

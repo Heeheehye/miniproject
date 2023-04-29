@@ -15,7 +15,7 @@ import java.util.Set;
 public class Init {
 
 	/* 전체 지점 초기값을 담을 객체배열 */
-	private static StoreDTO[] storeList = new StoreDTO[5]; 
+	private StoreDTO[] storeList = new StoreDTO[5]; 
 	
 	{  // StoreDTO 인스턴스 초기화 블록 
 		storeList[0] = new StoreDTO(1, "종로점", "02-111-1111"); 
@@ -26,7 +26,7 @@ public class Init {
 	}
 	
 	/* 전체 메뉴 초기값을 담을 객체배열 */ 
-	private static drinks[] bev = new drinks[6];
+	private drinks[] bev = new drinks[6];
 	{
 		bev[0] = new drinks(1, "아메리카노", 4000);
 		bev[1] = new drinks(2, "슈크림라떼", 5000);
@@ -44,7 +44,7 @@ public class Init {
 	private Set<drinks> storeMenu4;  	// 동대문전 셋팅 
 	
 	// 지점(Storelist) - 지점별 제공 가능메뉴(storeMenu)를 담을 Map   
-	private static Map<StoreDTO, Set<drinks>> service = new HashMap<>();
+	private Map<StoreDTO, Set<drinks>> service = new HashMap<>();
 	
 	{
        /* *************** 매장별 제공(service)가능한 메뉴들 세팅 *************** */
@@ -87,7 +87,7 @@ public class Init {
 	 * 지점정보 전체 배열 getter 
 	 * @return
 	 */
-	public static StoreDTO[] getStoreList() {
+	public StoreDTO[] getStoreList() {
 		return storeList;
 	}
 	
@@ -99,7 +99,7 @@ public class Init {
 	 * 메뉴정보 전체 배열 getter 
 	 * @return 
 	 */
-	public static drinks[] getBev() {
+	public drinks[] getBev() {
 		return bev;
 	}
 	
@@ -112,7 +112,7 @@ public class Init {
 	 * getter 
 	 * @return 지점별 제공가능메뉴 리스트 
 	 */
-	public static Map<StoreDTO, Set<drinks>> getService() {
+	public Map<StoreDTO, Set<drinks>> getService() {
 		return service;
 	}
 

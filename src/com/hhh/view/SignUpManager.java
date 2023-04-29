@@ -2,17 +2,17 @@ package com.hhh.view;
 
 import java.util.Scanner;
 
-import com.hhh.controller.ChargeManager;
 import com.hhh.model.dto.MyPageDTO;
+import com.hhh.model.dto.StaticUnity;
 
 public class SignUpManager {
 
 	
-	MyPageDTO md = new MyPageDTO();
+	MyPageDTO md ;
 	
 	
 	public SignUpManager() {
-		// TODO Auto-generated constructor stub
+
 	}
 	public MyPageDTO getMd() {
 		return md;
@@ -25,7 +25,7 @@ public class SignUpManager {
 
 	// 회원가입 정보 입력받기
 	public void signUp() {
-		ChargeManager pm = new ChargeManager();	
+//		ChargeManager pm = new ChargeManager();	 // 황: 없어도 될거같음 
 		int coupon = 0;
 		int paymoney = 0; 
 		Scanner sc = new Scanner(System.in);
@@ -46,7 +46,10 @@ public class SignUpManager {
 		System.out.println();
 		System.out.println("회원가입이 완료되었습니다🎉 신규가입 쿠폰이 지급되었습니다!📩");
 		System.out.println();
-		md = new MyPageDTO(name, id, gender, pm.payInfo(), coupon);
+		StaticUnity.mypage.setName(name);
+		StaticUnity.mypage.setId(id);
+		StaticUnity.mypage.setGender(gender);
+		StaticUnity.mypage.setCoupon(coupon);
 		return;
 	}
 

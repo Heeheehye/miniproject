@@ -1,54 +1,44 @@
 package com.hhh.controller;
 
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
+//import static com.hhh.model.dto.StaticUnity.*;
 
-import com.hhh.model.dto.Init;
-import com.hhh.model.dto.MyPageDTO;
+import java.util.LinkedHashSet;
+
 import com.hhh.model.dto.OrderListDTO;
 import com.hhh.model.dto.StoreDTO;
+import com.hhh.model.dto.StaticUnity;
 import com.hhh.model.dto.drinks;
 
+
 public class OrderManager {
-	/* 초기화 블럭, 리스트 있는 클래스를 통합?????????? */
-	private OrderListDTO order; 
+
 	/* 서비스지점 담을 변수 */
 	private LinkedHashSet<StoreDTO> servicestore;
-	/* 주문내역 담을 리스트 변수 */
-	public static List<OrderListDTO> orderlist = new ArrayList<>(); 
-
-	private Init init = new Init(); 
 	
+	/**
+	 * 사용자가 메뉴번호로 입력하여 선택한 메뉴 담기 
+	 * @param selectMenu 사용자가 입력한 메뉴번호
+	 * @return 메뉴번호에 해당하는 메뉴정보 
+	 */
 	public drinks orderMenu(int selectMenu) {
-		drinks bev = new drinks(); 	// drinks  담을 변수 
-		 
-		/*0428 유희윤 
-		System.out.println("--------메뉴--------");
-		System.out.println();
-
-		for (int i = 0; i < init.getBev().length; i++) {
-			System.out.println(init.getBev()[i].getNum() + ". " + init.getBev()[i].getName() + " " + init.getBev()[i].getPrice() / 1000 + ","
-					+ String.valueOf(init.getBev()[i].getPrice()).substring(1, 4));
-		}
-		System.out.println();
 		
-		*/
+		// drinks  선택한 메뉴 담을 변수 
+		drinks bev = new drinks(); 
 		
-		
-		for (int i = 0; i < init.getBev().length; i++) {
-			
-			if(Init.getBev()[i].getNum() == selectMenu ) {
-				System.out.println("선택 메뉴 : " + Init.getBev()[i]);	
-				bev = Init.getBev()[i];
-				break; 
-			}  
-		}
-		if(Init.getBev().length < selectMenu) {
+		if(selectMenu > StaticUnity.init.getBev().length) {
 			System.out.println("선택하신 메뉴번호는 없는 메뉴입니다.");	
+		return bev;		// null값 
+		} else {
+			for (int i = 0; i < StaticUnity.init.getBev().length; i++) {
+				
+				if(selectMenu == StaticUnity.init.getBev()[i].getNum()) {
+					System.out.println("선택 메뉴 : " + StaticUnity.init.getBev()[i]);	
+					bev = StaticUnity.init.getBev()[i];
+					break; 
+				} 
+			}
+			return bev; 
 		}
-		return bev; 
 	}
 	
 	/**
@@ -58,48 +48,62 @@ public class OrderManager {
 	 */
 	public LinkedHashSet<StoreDTO> serviceStore(drinks orderMenu){
 		servicestore = new LinkedHashSet<>();  // 초기화 
-		for (int i = 0; i < Init.getService().size(); i++) {
+		for (int i = 0; i < StaticUnity.init.getService().size(); i++) {
 			
-			if((Init.getService().get(Init.getStoreList()[i]))
-					   .toString().contains(orderMenu.getName())) {		// ********************************************
-				servicestore.add(Init.getStoreList()[i]); 
+			if((StaticUnity.init.getService().get(StaticUnity.init.getStoreList()[i]))
+					   .toString().contains(orderMenu.getName())) {		
+				servicestore.add(StaticUnity.init.getStoreList()[i]); 
 			} 
 
 		}
 		return servicestore;
 	}
+	
+	/**
+	 * 선택한 지점 반환하기 
+	 * @param selectStore 선택한 지점 글자로 입력받음 
+	 * @return
+	 */
 	public StoreDTO orderStore(String selectStore) {
 		StoreDTO store = new StoreDTO();  // 초기화 
-				for (int i = 0; i < Init.getService().size(); i++) {
-					if(servicestore.toString().contains(selectStore)){
-						if(Init.getStoreList()[i].getStoreName().contains(selectStore)){
-							store = Init.getStoreList()[i];
-							System.out.printf("%s 지점을 선택하셨습니다.\n", store.getStoreName());
-							break;
-							}
-						}
+		if(!(servicestore.toString().contains(selectStore))) {
+			System.out.println("불가능한 지점입니다. 다시 선택하세요."); 
+		} else{
+			for (int i = 0; i < StaticUnity.init.getService().size(); i++) {
+				if(servicestore.toString().contains(selectStore)){
+					if(StaticUnity.init.getStoreList()[i].getStoreName().contains(selectStore)){
+						store = StaticUnity.init.getStoreList()[i];
+						System.out.printf("[%s] 지점을 선택하셨습니다.\n", store.getStoreName());
+						break;
 					}
-				return store; 
+				}
+			}
+		}
+		return store; 
 	}
+	
+	/**
+	 * 할인쿠폰 적용한 금액 계산하기
+	 * @param selectCoupon 쿠폰 할인율 (10이면 10%, 1이면 없음) 
+	 * @param orderMenu 선택한 메뉴
+	 * @return 할인적용된 결제할금액 반환 
+	 */
 	public int dcPrice(int selectCoupon, drinks orderMenu) {
-		
-		return	(orderMenu.getPrice())*(1-selectCoupon/100);
+		if(selectCoupon != 0) {
+			StaticUnity.mypage.setCoupon(StaticUnity.mypage.getCoupon()-1);
+		}
+		return	(int)((orderMenu.getPrice())*(1.0-(selectCoupon/100.0)));
 	}
 	
-	public void payment(drinks orderMenu, StoreDTO orderStore, int dcPrice) {
-		
-		/* */ 
-		order = new OrderListDTO(orderMenu, dcPrice, orderStore);
-		orderlist.add(order); 
+	public void payment(drinks orderMenu, int dcPrice, StoreDTO orderStore) {
+
+		OrderListDTO ordersuccess = new OrderListDTO(orderMenu, dcPrice, orderStore);
+		StaticUnity.orderlist.setOrderlist(ordersuccess);
 		System.out.println("주문완료!! 주문하신 정보는 마이페이지 주문내역에서 확인해주세요.");
-		MyPageDTO.setPaymoney(MyPageDTO.getPaymoney()-dcPrice);
-		MyPageDTO.setCoupon(-1);
+		
+		StaticUnity.mypage.setPaymoney(StaticUnity.mypage.getPaymoney()-dcPrice);
+		
 	}
-	
-	public static List<OrderListDTO> getOrderlist() {
-		return orderlist;
-	}
-	
 	
 
 }

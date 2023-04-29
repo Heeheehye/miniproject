@@ -46,6 +46,6 @@ public class drinks {
 	public String toString() {
 		return  num + ". " + name + " " + price + " 원\n";
 	}
-	
-	
 }
+	
+	
