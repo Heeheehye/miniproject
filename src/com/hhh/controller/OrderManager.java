@@ -95,13 +95,19 @@ public class OrderManager {
 	}
 	
 	public void payment(drinks orderMenu, int dcPrice, StoreDTO orderStore) {
+		
+		if(dcPrice == 0 ){
+			dcPrice = orderMenu.getPrice(); 
+		}
+		if(dcPrice < orderMenu.getPrice()) {
+			StaticUnity.mypage.setCoupon(StaticUnity.mypage.getCoupon()-1);
+		}
 
 		OrderListDTO ordersuccess = new OrderListDTO(orderMenu, dcPrice, orderStore);
 		StaticUnity.orderlist.setOrderlist(ordersuccess);
 		System.out.println("주문완료!! 주문하신 정보는 마이페이지 주문내역에서 확인해주세요.");
-		
-		StaticUnity.mypage.setCoupon(StaticUnity.mypage.getCoupon()-1);
 		StaticUnity.mypage.setPaymoney(StaticUnity.mypage.getPaymoney()-dcPrice);
+	
 		
 	}
 	

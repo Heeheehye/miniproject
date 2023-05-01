@@ -15,7 +15,7 @@ public class MainPage {
 		Order order = new Order();
 
 		while(true) {
-			System.out.println("\t\t☕ WELCOME TO MINI CAFE 🍰 ");
+			System.out.println("\t           ☕ WELCOME TO MINI CAFE 🍰 ");
 			System.out.println();
 			System.out.println("   *  *      *      1. 회원가입     *               *");
 			System.out.println("   *           *    2. 마이페이지           *        *");

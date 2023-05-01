@@ -28,11 +28,11 @@ public class Order {
 		
 		drinks orderMenu = new drinks(); 			// 주문메뉴 담을 변수
 		StoreDTO orderStore = new StoreDTO();		// 주문매장 담을 변수 
-		int dcPrice = 1; 				// 쿠폰적용 금액 담을 변수 
+		int dcPrice = 0; 				// 쿠폰적용 금액 담을 변수 
 		boolean ispay = false; 			// 주문가능한지 판단할 변수 
 		label:
 		while(true) {
-			System.out.println("\t\t          ☕ 주문하기 🍰 ");
+			System.out.println("\t\t            💰 주문하기 💰 ");
 			System.out.println();
 			System.out.println("   *  *      *      1. 주문메뉴 선택     *               *");
 			System.out.println("   *           *    2. 주문매장 선택           *        *");
@@ -148,14 +148,14 @@ public class Order {
 			}
 		} else {
 			System.out.println("적용가능한 할인쿠폰이 없습니다.");
-			return count; // 할인쿠폰 적용이 안되면 기본값 1 반환 
+			return count; // 할인쿠폰 적용이 안되면 기본값 0 반환 
 		}
 		
 	}
 	
 	public boolean isPay(drinks orderMenu, StoreDTO orderStore, int dcPrice) {
 		
-		if (StaticUnity.mypage.getPaymoney() < dcPrice) {
+		  if (StaticUnity.mypage.getPaymoney() < dcPrice) {
 			System.out.println("페이머니가 부족합니다. 페이머니를 먼저 충전해주세요.");
 			return false; 
 		} else if(orderMenu.getName() == null) {
