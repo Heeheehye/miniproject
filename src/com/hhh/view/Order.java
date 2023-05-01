@@ -45,7 +45,8 @@ public class Order {
 				System.out.print("주문하기 페이지입니다. 원하는 번호를 입력하세요.");
 				num = sc.nextInt();
 			} catch (Exception e1) {
-				System.out.println("숫자로만 입력하세요.");
+				sc.nextLine();
+				System.out.println("숫자로만 입력하세요. 메인화면으로 돌아갑니다.");
 				break;
 			}
 			
@@ -54,12 +55,10 @@ public class Order {
 				case 1: orderMenu = omg.orderMenu(selectMenu()); 
 				break;
 							
-				case 2: try {
-					orderStore = omg.orderStore(selectStore(orderMenu));
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					System.out.println("불가능한 지점입니다. 다시 선택하세요."); break;
-				} break; 
+				case 2:	
+					try { orderStore = omg.orderStore(selectStore(orderMenu));
+				    } catch (Exception e) {
+					  } break;
 				case 3: dcPrice = omg.dcPrice(selectCoupon(), orderMenu); 
 						System.out.println("결제할 금액 : " + dcPrice );			
 						break; 
@@ -105,16 +104,26 @@ public class Order {
 	
 	public String selectStore(drinks orderMenu) throws Exception {
 		
-		Set<StoreDTO> serviceStore = omg.serviceStore(orderMenu);  // 반환된 지점리스트를 저장할 리스트변수
-		
-		System.out.println("========== 주문가능 지점 ========= ");
-		serviceStore.stream().map(StoreDTO->StoreDTO.toString()).forEach(System.out::println);		
-		System.out.print("주문하실 지점의 지점명을 입력해주세요.");
-		sc.nextLine();
-		String selectStore = sc.nextLine();
-		
-		return selectStore; 
-		
+		if(orderMenu.getName() == null) {
+			System.out.println("메뉴가 선택되지 않았습니다. 메뉴를 먼저 선택해주세요.");
+			return null; 
+		} else {
+			Set<StoreDTO> serviceStore = omg.serviceStore(orderMenu);  // 반환된 지점리스트를 저장할 리스트변수
+			
+			System.out.println("========== 주문가능 지점 ========= ");
+			serviceStore.stream().map(StoreDTO->StoreDTO.toString()).forEach(System.out::println);		
+			System.out.print("주문하실 지점의 지점명을 입력해주세요.");
+			sc.nextLine();
+			String selectStore;
+			try {
+				selectStore = sc.nextLine();
+				return selectStore; 
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				System.out.println("불가능한 지점입니다. 다시 입력하세요.");
+				return null; 
+			}
+		}
 	}
 	
 	public int selectCoupon() {

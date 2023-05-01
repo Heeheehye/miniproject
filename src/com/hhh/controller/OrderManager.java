@@ -66,6 +66,7 @@ public class OrderManager {
 	 */
 	public StoreDTO orderStore(String selectStore) {
 		StoreDTO store = new StoreDTO();  // 초기화 
+		
 		if(!(servicestore.toString().contains(selectStore))) {
 			System.out.println("불가능한 지점입니다. 다시 선택하세요."); 
 		} else{
@@ -89,9 +90,7 @@ public class OrderManager {
 	 * @return 할인적용된 결제할금액 반환 
 	 */
 	public int dcPrice(int selectCoupon, drinks orderMenu) {
-		if(selectCoupon != 0) {
-			StaticUnity.mypage.setCoupon(StaticUnity.mypage.getCoupon()-1);
-		}
+	
 		return	(int)((orderMenu.getPrice())*(1.0-(selectCoupon/100.0)));
 	}
 	
@@ -101,6 +100,7 @@ public class OrderManager {
 		StaticUnity.orderlist.setOrderlist(ordersuccess);
 		System.out.println("주문완료!! 주문하신 정보는 마이페이지 주문내역에서 확인해주세요.");
 		
+		StaticUnity.mypage.setCoupon(StaticUnity.mypage.getCoupon()-1);
 		StaticUnity.mypage.setPaymoney(StaticUnity.mypage.getPaymoney()-dcPrice);
 		
 	}
