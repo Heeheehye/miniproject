@@ -7,6 +7,27 @@ import java.util.*;
 
 public class Menu {
 
+	
+	//System.out.println();
+		/*
+		 * System.out.println("	(  )   (   )  )");
+		 * System.out.println("    ) (   )  (  (");
+		 * System.out.println("    ( )  (    ) )");
+		 * System.out.println("    _____________");
+		 * System.out.println("   <_____________> ___");
+		 * System.out.println("   |             |/ _ \\");
+		 * System.out.println("   |               | | |");
+		 * System.out.println("   |               |_| |");
+		 * System.out.println("___|             |\\___/");
+		 * System.out.println("/    \\___________/    \\");
+		 * System.out.println("\\_____________________/ "); System.out.println();
+		 */
+
+	
+	
+	
+	
+	
 	private static drinkManager dr = new drinkManager();
 	
 	public static void searchMenu() {
